@@ -16,8 +16,16 @@ namespace SnakeGame
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
 
+			Params settings = new Params();
+			Sounds sound = new Sounds(settings.GetResourceFolder());
+			sound.Play("sound.mp3");
+			Sounds soundeat = new Sounds(settings.GetResourceFolder());
+
 			Score score = new Score(0);//peremennaya dlya ochkov, otobrazenie
 			score.ScorePrint();
+
+			Speed speed = new Speed();
+			speed.SpeedPrint();
 			
 			//Vivod to4ki na ekran
 			Point p = new Point(4, 5, '*');
@@ -32,10 +40,12 @@ namespace SnakeGame
 			{
 				if (walls.IsHit(snake) || snake.IsHitTail())//stop esli zadevaet stenu
 				{
+					sound.Play("lose.mp3");
 					break;
 				}
 				if (snake.Eat(food))//sjedaet edu, dalee sozdaet novuyu edu
 				{
+					sound.Play("food.mp3");
 					score.ScorePlus();//plus k ochkam
 					score.ScorePrint();//obnovlyaet ochki
 					food = foodCreator.CreateFood();
@@ -47,11 +57,19 @@ namespace SnakeGame
 					snake.Move();
 				}
 				Thread.Sleep(100);//zaderzhka zmeiki
-
-				if (Console.KeyAvailable)//upravlenie zmeikoy
+				int a = 50;
+				while (score == speed)
 				{
-					ConsoleKeyInfo key = Console.ReadKey();
-					snake.HandleKey(key.Key);
+
+					Thread.Sleep(100 + a);
+					a += 50;
+					speed++;
+
+					if (Console.KeyAvailable)//upravlenie zmeikoy
+					{
+						ConsoleKeyInfo key = Console.ReadKey();
+						snake.HandleKey(key.Key);
+					}
 				}
 			}
 		}

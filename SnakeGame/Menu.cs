@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SnakeGame
 {
-    class Menu
+    public class Menu
     {
     }
 }
