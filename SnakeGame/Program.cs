@@ -16,6 +16,9 @@ namespace SnakeGame
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
 
+			Score score = new Score(0);//peremennaya dlya ochkov, otobrazenie
+			score.ScorePrint();
+			
 			//Vivod to4ki na ekran
 			Point p = new Point(4, 5, '*');
 			Snake snake = new Snake(p, 4, Direction.RIGHT);//poyavlenie zmeiki s pervona4alnoy to4koy
@@ -27,14 +30,17 @@ namespace SnakeGame
 
 			while (true)//beskone4niy cikl dlya kontrolya statusa zmeiki
 			{
-				if (walls.IsHit(snake) || snake.IsHitTail())
+				if (walls.IsHit(snake) || snake.IsHitTail())//stop esli zadevaet stenu
 				{
 					break;
 				}
-				if (snake.Eat(food))
+				if (snake.Eat(food))//sjedaet edu, dalee sozdaet novuyu edu
 				{
+					score.ScorePlus();//plus k ochkam
+					score.ScorePrint();//obnovlyaet ochki
 					food = foodCreator.CreateFood();
 					food.Draw();
+
 				}
 				else
 				{
