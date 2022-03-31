@@ -16,12 +16,16 @@ namespace SnakeGame
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
 
-            Params settings = new Params();
-            Sounds sound = new Sounds(settings.GetResourceFolder());
-            sound.Play("sound.mp3");
-            Sounds soundeat = new Sounds(settings.GetResourceFolder());
+			Color color = new Color();
+			color.ColorOfSnake();
+			Console.Clear();
 
-            Score score = new Score(0,0);//peremennaya dlya ochkov, otobrazenie
+			//Params settings = new Params();
+			//Sounds sound = new Sounds(settings.GetResourceFolder());
+			//sound.Play("sound.mp3");
+			//Sounds soundeat = new Sounds(settings.GetResourceFolder());
+
+			Score score = new Score(0,0);//peremennaya dlya ochkov, otobrazenie
 			score.speed=100;
 			score.ScorePrint();
 

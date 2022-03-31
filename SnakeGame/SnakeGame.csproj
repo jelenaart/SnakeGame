@@ -53,7 +53,6 @@
     <Compile Include="FoodCreator.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Figure.cs" />
-    <Compile Include="GameOver.cs" />
     <Compile Include="HorizontalLine.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Params.cs" />
@@ -63,6 +62,7 @@
     <Compile Include="Score.cs" />
     <Compile Include="Snake.cs" />
     <Compile Include="Sounds.cs" />
+    <Compile Include="Color.cs" />
     <Compile Include="VerticalLine.cs" />
     <Compile Include="Walls.cs" />
   </ItemGroup>
